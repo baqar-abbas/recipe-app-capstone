@@ -1,5 +1,3 @@
-# recipe-app-capstone
-
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 > # Recipe Application
