@@ -4,7 +4,7 @@
 
 | Project Login Page |
 |---------------------------------------|
-|<div align="center"><img src="" alt="screenshot" width="auto" height="auto"/></div>|
+|![carb-tracker](https://github.com/baqar-abbas/recipe-app-capstone/assets/111179533/5732879b-b33e-49f6-95c9-47c3cce55bb3)|
 
 
 <a name="readme-top"></a>
