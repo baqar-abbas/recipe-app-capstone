@@ -24,9 +24,10 @@ default: &default
 development:
   <<: *default
   database: recipe_app_capstone_development
-  host: localhost
   username: postgres
-  password: pgAdmin@01
+  password: 313
+  host: localhost
+  port: 5432
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -60,9 +61,10 @@ development:
 test:
   <<: *default
   database: recipe_app_capstone_test
-  host: localhost
   username: postgres
-  password: pgAdmin@01
+  password: 313
+  host: localhost
+  port: 5432
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
