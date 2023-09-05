@@ -67,15 +67,17 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Setup and controllers]**
-- **[Controllers specs]**
-- **[Creating a data model]**
-- **[Processing data in models]**
-- **[Views and forms]**
-- **[Validations, Model specs, and n+1 problems]**
-- **[Add Devise and authorization rules]**
-- **[Integration specs for Views]**
-- **[API documentation]**
+- **[Design the Application]**
+- **[Login page and registration page]**
+- **[Authentication]**
+- **[Navigation menu]**
+- **[General Shopping List]**
+- **[Food list]**
+- **[Recipes list]**
+- **[Recipe details]**
+- **[Public recipe list]**
+- **[Unit and integration tests]**
+- **[RSpec and Capybara testing]**
 
 | Implemented Schema's ERD |
 |---------------------------------------|
