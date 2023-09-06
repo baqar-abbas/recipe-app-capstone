@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h1 class="card-title"><%= @recipe.name %></h1>
+
+          <!-- Replace the "Public" label with a Bootstrap Switch -->
+          <div class="custom-control custom-switch float-md-right mt-2">
+            <input type="checkbox" class="custom-control-input" id="publicSwitch" <%= @recipe.public ? 'checked' : '' %>>
+            <label class="custom-control-label" for="publicSwitch" ><strong>Public</strong></label>
+          </div>
+
+          <p class="card-text"><strong>Preparation Time:</strong> <%= @recipe.preparation_time %> minutes</p>
+          <p class="card-text"><strong>Cooking Time:</strong> <%= @recipe.cooking_time %> minutes</p>
+          <p class="card-text"><strong>Description:</strong> <%= @recipe.description %></p>
+          <p class="card-text"><strong>User:</strong> <%= @recipe.user.name %></p>
+
+          <%= link_to 'Back', user_recipes_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

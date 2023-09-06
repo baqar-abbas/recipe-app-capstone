@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # end
 
   root "users#index"
-  
+
   resources :users do
+    resources :recipes, except: [:update] do
+    end
   end
 end
