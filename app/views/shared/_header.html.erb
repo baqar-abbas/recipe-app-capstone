@@ -1,15 +1,30 @@
 <nav class="navbar  bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand text-white h1" href="<%link_to root_path%>">Receipe APP</a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <% if current_user.present? %>
+      <li class="nav-item">
+        <%= link_to "Foods", user_foods_path(current_user), class: "nav-link text-white" %>
+      </li>
+      
+      <li class="nav-item">
+        <%= link_to "Recipes", user_recipes_path(current_user), class: "nav-link text-white" %>
+      </li>
+      <% end %>
+    </ul>
+    <%# <% link_to "Food", user_foods_path, class: "navbar-brand text-white" %>
+    <%# <% link_to "Recipe", user_recipes_path, class: "navbar-brand text-white" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <%# <div class="collapse navbar-collapse" id="navbarSupportedContent"> %>
       <ul class="navbar-nav navbar-right me-auto mb-2 mb-lg-0">
+      <% if user_signed_in? %>
         <li class="nav-item">
           <%# <a class="nav-link active text-white" aria-current="page" href="#">Sign out</a> %>
           <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link active" %>
         </li>
+      <% else %>
         <li class="nav-item">
           <%# <a class="nav-link text-white" href="#">Sign in </a> %>
            <%= link_to "Login", new_user_session_path, class: "nav-link text-white" %>
@@ -18,6 +33,7 @@
           <%# <a class="nav-link text-white" href="#">Sign up </a> %>
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link text-white" %> 
         </li>
+      <% end %>
       </ul>
     <%# </div> %>
   </div>
