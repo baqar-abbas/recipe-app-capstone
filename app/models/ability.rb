@@ -8,18 +8,18 @@ class Ability
     #   can :read, :all
     #   return unless user.admin?
     #   can :manage, :all
-    if user.admin?
-      can :manage, :all
-    else
-      can :read, Recipe, public: true
-      can :manage, Recipe, user_id: user.id
-      can :manage, RecipeFood
-      can :manage, Food, user_id: user.id
-      # can :read, Recipe, user_id: user.id # Can Read Recipe if user_id == Current user id
-      # can :destroy, Recipe, user_id: user.id
-      # can :create, Recipe
+    # if user.admin?
+    #   can :manage, :all
+    # else
+    #   can :read, Recipe, public: true
+    #   can :manage, Recipe, user_id: user.id
+    #   can :manage, RecipeFood
+    #   can :manage, Food, user_id: user.id
+    #   # can :read, Recipe, user_id: user.id # Can Read Recipe if user_id == Current user id
+    #   # can :destroy, Recipe, user_id: user.id
+    #   # can :create, Recipe
 
-    end
+    # end
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

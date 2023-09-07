@@ -4,7 +4,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
   end
 
   def new
@@ -20,6 +21,17 @@ class RecipesController < ApplicationController
       redirect_to user_recipes_path(id: @recipe.id), notice: 'Recipe was successfully created.'
     else
       render :new
+    end
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
+
+    if @recipe.update(recipe_params)
+      redirect_to user_recipe_path(@user, @recipe), notice: 'Recipe was successfully updated.'
+    else
+      render :show
     end
   end
 

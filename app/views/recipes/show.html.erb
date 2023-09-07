@@ -5,11 +5,15 @@
         <div class="card-body">
           <h1 class="card-title"><%= @recipe.name %></h1>
 
-          <!-- Replace the "Public" label with a Bootstrap Switch -->
-          <div class="custom-control custom-switch float-md-right mt-2">
-            <input type="checkbox" class="custom-control-input" id="publicSwitch" <%= @recipe.public ? 'checked' : '' %>>
-            <label class="custom-control-label" for="publicSwitch" ><strong>Public</strong></label>
-          </div>
+          <%= form_with(model: [@user, @recipe], url: user_recipe_path(@user, @recipe), local: true, method: :patch) do |form| %>
+            <div class="custom-control custom-switch float-md-right mt-2">
+              <%= form.hidden_field :public, value: 0 %>
+              <%= form.check_box :public, class: "custom-control-input", id: "publicSwitch", onchange: "this.form.submit();" %>
+              <%= form.label :public, "Public", class: "custom-control-label", for: "publicSwitch" %>
+            </div>
+            <!-- Hidden submit button -->
+            <%= form.submit '', style: 'display: none;' %>            
+          <% end %>
 
           <p class="card-text"><strong>Preparation Time:</strong> <%= @recipe.preparation_time %> minutes</p>
           <p class="card-text"><strong>Cooking Time:</strong> <%= @recipe.cooking_time %> minutes</p>
@@ -17,6 +21,7 @@
           <p class="card-text"><strong>User:</strong> <%= @recipe.user.name %></p>
 
           <%= link_to 'Back', user_recipes_path, class: 'btn btn-primary' %>
+          <%= link_to 'Add ingrediat', user_recipes_path, class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
