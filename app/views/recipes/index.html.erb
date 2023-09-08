@@ -13,12 +13,14 @@
             <p class="card-text"><%= recipe.description %></p>
           </div>
           
-            <div class="card-footer d-flex justify-content-end align-items-center" style="height: 40px;">
+          <div class="card-footer d-flex justify-content-end align-items-center" style="height: 40px;">
             <div>
                 <%= link_to "Details", user_recipe_path(id: recipe.id), class: 'btn btn-link details-link text-info' %>
-                <%= link_to 'Delete', user_recipe_path(user_id: recipe.user_id, id: recipe.id), data: { turbo_confirm: 'Are you sure?', turbo_method: :delete }, class: 'btn btn-link delete-link text-danger' %>
+                <% if current_user && current_user.id == recipe.user_id %>
+                  <%= link_to 'Delete', user_recipe_path(user_id: recipe.user_id, id: recipe.id), data: { turbo_confirm: 'Are you sure?', turbo_method: :delete }, class: 'btn btn-link delete-link text-danger' %>
+                <% end %>
             </div>
-            </div>
+          </div>
         </div>
       </div>
     <% end %>
