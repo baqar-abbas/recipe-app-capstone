@@ -5,7 +5,8 @@ class RecipesController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @recipe = @user.recipes.find(params[:id])
+    # @recipe = @user.recipes.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     # Check if the user is the owner of the recipe or if the recipe is public
     @is_owner = current_user == @user
     @is_public = @recipe.public?
@@ -30,7 +31,8 @@ class RecipesController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
-    @recipe = @user.recipes.find(params[:id])
+    # @recipe = @user.recipes.find(params[:id])
+    @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
       redirect_to user_recipe_path(@user, @recipe), notice: 'Recipe was successfully updated.'
