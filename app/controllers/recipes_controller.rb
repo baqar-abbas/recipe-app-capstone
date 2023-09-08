@@ -1,11 +1,15 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(user_id: current_user.id)
   end
 
   def show
     @user = User.find(params[:user_id])
     @recipe = @user.recipes.find(params[:id])
+    # Check if the user is the owner of the recipe or if the recipe is public
+    @is_owner = current_user == @user
+    @is_public = @recipe.public?
+    @food_item = RecipeFood.new if @is_owner
   end
 
   def new
