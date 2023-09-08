@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     end
     resources :foods, except: [:update] do
     end
+    resources :general_shopping_list, only: [:index]
   end
 end

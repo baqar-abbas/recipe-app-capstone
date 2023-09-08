@@ -21,10 +21,10 @@
           <p class="card-text"><strong>User:</strong> <%= @recipe.user.name %></p>
 
           <div class="d-flex justify-content-between align-items-center">
-            <%= link_to 'Back', user_recipes_path, class: 'btn btn-primary' %>
+            <%= link_to 'Generate Shopping List', user_recipes_path, class: 'btn btn-primary' %>
 
             <% if @is_owner %>
-              <%= link_to 'Add Ingredient', new_user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe.id), class: 'btn btn-success ml-2' %>
+              <%= link_to 'Add Ingredient', new_user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe.id), class: 'btn btn-primary ml-2' %>
             <% end %>
           </div>
         </div>
