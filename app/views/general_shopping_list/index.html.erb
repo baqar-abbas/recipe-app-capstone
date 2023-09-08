@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="mt-4">Shopping List</h2>
+  <div class="general-description">
+    <div class="row mt-4">
+      <div class="col">
+        <h3>Amount of food items to buy: <%= @foods.count %></h3>
+      </div>
+      <div class="col">
+        <h3>Total value of food needed: $ <%= @total %></h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive mt-4">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |food| %>
+          <% if current_user.id == food.user_id %>
+            <tr>
+              <td><%= food.name %></td>
+              <td><%= food.quantity %> <%= food.measurement_unit %></td>
+              <td>$ <%= food.price * food.quantity %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
