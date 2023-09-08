@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :recipes do
       resources :recipe_foods, only: [:new, :create]
     end
+    resources :public_recipes, only: [:index]
     resources :foods, except: [:update] do
     end
   end
