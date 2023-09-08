@@ -1,9 +1,7 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.all
+    @foods = Food.where(user_id: current_user.id)
   end
-
-  def show; end
 
   def new
     @food = Food.new
