@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+/* application.css */
+.recipe-link {
+  text-decoration: none !important; /* Remove underline */
+  color: #333; /* Change link color to your preference */
+
+  /* Add any other styles you want for your links */
+}
