@@ -7,7 +7,8 @@ class RecipesController < ApplicationController
     @user = User.find(params[:user_id])
     # @recipe = @user.recipes.find(params[:id])
     @recipe = Recipe.find(params[:id])
-    # Check if the user is the owner of the recipe or if the recipe is public
+    @recipe_foods = @recipe.recipe_foods.includes(:food)
+
     @is_owner = current_user == @user
     @is_public = @recipe.public?
     @food_item = RecipeFood.new if @is_owner
