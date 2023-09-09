@@ -6,8 +6,8 @@
 
   <div class="row">
     <% @recipes.each do |recipe| %>
-      <div class="col-md-6">
-        <div class="card mb-3">
+      <div class="col-md-12">
+        <div class="card mb-3 custom-card">
           <div class="card-body">
             <h5 class="card-title"><%= recipe.name %></h5>
             <p class="card-text"><%= recipe.description %></p>

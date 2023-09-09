@@ -16,8 +16,10 @@
 
 /* application.css */
 .recipe-link {
-  text-decoration: none !important; /* Remove underline */
-  color: #333; /* Change link color to your preference */
+  text-decoration: none !important;
+  color: #333; 
+}
 
-  /* Add any other styles you want for your links */
+.custom-card {
+  border: 2px solid #000 !important;
 }
