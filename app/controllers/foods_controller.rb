@@ -2,7 +2,6 @@ class FoodsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    # @foods = Food.where(user_id: current_user.id)
     @foods = Food.where(user_id: current_user.id).includes(:user)
   end
 

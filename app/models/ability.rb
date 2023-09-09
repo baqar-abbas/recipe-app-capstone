@@ -3,7 +3,6 @@ class Ability
 
   def initialize(current_user)
     # Define abilities for the user here. For example:
-    #
     return unless current_user.present?
 
     can :manage, Recipe, user: current_user

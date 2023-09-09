@@ -6,7 +6,7 @@ RSpec.describe 'Recipe #show page', type: :feature do
     @user = User.create(name: 'baqarnoorali', email: 'baqarnoorali@gmail.com', password: 'baqarnoorali')
     @food = Food.create(name: 'first food', measurement_unit: 'kg', price: 300, quantity: 5, user_id: @user.id)
     @recipe = Recipe.create(name: 'first recipe', description: 'this is my first recipe',
-        preparation_time: '25', cooking_time: '13', user: @user)
+                            preparation_time: '25', cooking_time: '13', user: @user)
 
     @recipe_food1 = RecipeFood.create(quantity: 6, recipe_id: @recipe.id, food_id: @food.id)
     @recipe_food2 = RecipeFood.create(quantity: 2, recipe_id: @recipe.id, food_id: @food.id)
