@@ -20,6 +20,37 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
+  def edit
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe = @recipe_food.recipe
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe_food.quantity = params[:recipe_food][:quantity]
+
+    if @recipe_food.save
+      redirect_to user_recipe_path(@user, @recipe_food.recipe), notice: 'Recipe Food was updated successfully'
+    else
+      flash.now[:alert] = @recipe_food.errors.full_messages.first if @recipe_food.errors.any?
+      render :edit, status: 400
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe = @recipe_food.recipe
+
+    if @recipe_food.destroy
+      redirect_to user_recipe_path(@user, @recipe), notice: 'Recipe Food was deleted successfully'
+    else
+      flash.now[:alert] = @recipe_food.errors.full_messages.first if @recipe_food.errors.any?
+      render :new, status: 400
+    end
+  end
+
   private
 
   def recipe_food_params
