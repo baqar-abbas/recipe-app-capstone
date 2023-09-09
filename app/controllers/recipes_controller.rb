@@ -1,11 +1,12 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   def index
-    @recipes = Recipe.where(user_id: current_user.id)
+    @recipes = Recipe.where(user_id: current_user.id).includes(:recipe_foods)
   end
 
   def show
     @user = User.find(params[:user_id])
-    # @recipe = @user.recipes.find(params[:id])
     @recipe = Recipe.find(params[:id])
     @recipe_foods = @recipe.recipe_foods.includes(:food)
 
@@ -32,7 +33,6 @@ class RecipesController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
-    # @recipe = @user.recipes.find(params[:id])
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
