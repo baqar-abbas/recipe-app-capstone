@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h1 class="card-title"><%= @recipe.name %></h1>
+
+          <%= form_with(model: [@user, @recipe], url: user_recipe_path(@user, @recipe), local: true, method: :patch) do |form| %>
+            <div class="custom-control custom-switch float-md-right mt-2">
+              <%= form.hidden_field :public, value: 0 %>
+              <%= form.check_box :public, class: "custom-control-input", id: "publicSwitch", onchange: "this.form.submit();" %>
+              <%= form.label :public, "Public", class: "custom-control-label", for: "publicSwitch" %>
+            </div>
+            <!-- Hidden submit button -->
+            <%= form.submit '', style: 'display: none;' %>            
+          <% end %>
+
+          <p class="card-text"><strong>Preparation Time:</strong> <%= @recipe.preparation_time %> Hours</p>
+          <p class="card-text"><strong>Cooking Time:</strong> <%= @recipe.cooking_time %> Hours</p>
+          <p class="card-text"><strong>Description:</strong> <%= @recipe.description %></p>
+          <p class="card-text"><strong>User:</strong> <%= @recipe.user.name %></p>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <%= link_to 'Generate Shopping List', user_recipe_shopping_list_index_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
+
+            <% if @is_owner %>
+              <%= link_to 'Add Ingredient', new_user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe.id), class: 'btn btn-primary ml-2' %>
+            <% end %>
+          </div>
+          <table class="table table-bordered table-striped my-5">
+            <thead>
+              <tr>
+                <th class="text-center">Food</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Value</th>
+                <th class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @recipe_foods.each do |recipe_food| %>
+                <tr>
+                  <td class="text-center"><%= recipe_food.food.name %></td>
+                  <td class="text-center"><%= recipe_food.quantity %></td>
+                  <td class="text-center">$<%= recipe_food.food.price * recipe_food.quantity %></td>
+                  <td class="text-center">
+                    <%= link_to "Edit", edit_user_recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), class: "text-success" %>
+                    <%= link_to "Remove", user_recipe_recipe_food_path(@user, @recipe, recipe_food), data: { turbo_confirm: 'Are you sure?', turbo_method: :delete }, class: "text-danger ml-3" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

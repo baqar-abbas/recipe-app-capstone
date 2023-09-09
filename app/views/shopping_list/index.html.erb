@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h1 class="card-title">Shopping List</h1>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="card-subtitle text-success">Total items: <%= @total_foods %></h4>
+            <h4 class="card-subtitle text-success">Total price: $<%= @total_price %></h4>
+          </div>
+          
+          <% @recipe_foods.each do |recipe_food| %>
+            <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title"><%= recipe_food.food.name %></h5>
+                <p class="card-text">Quantity: <%= recipe_food.quantity %><%= recipe_food.food.measurement_unit %></p>
+                <p class="card-text">Price: $<%= recipe_food.food.price * recipe_food.quantity %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container-fluid p-0">
+  <!-- Hero Image -->
+  <div class="hero-image" style="background-image: url('/assets/recipeapp.jpg'); height: 400px; background-size: cover;">
+  </div>
+
+  <!-- Welcome Message -->
+  <div class="hero-text text-center py-5">
+    <% if user_signed_in? %>
+      <h1>Welcome, <%= current_user.name %>!</h1>
+      <p>Enjoy using the Recipe App.</p>
+    <% else %>
+      <h1>Welcome to the Recipe App</h1>
+      <p>Please sign in or sign up to get started.</p>
+    <% end %>
+  </div>
+</div>
+
+
+
+<%# <div class="hero-image" style="background-image: url('/assets/recipeapp.jpg');"> %>

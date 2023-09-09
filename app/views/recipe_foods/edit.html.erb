@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header">
+          <h1>Edit Recipe Food Quantity</h1>
+        </div>
+        <div class="card-body">
+          <h4 class="card-subtitle mb-4 text-danger">Current quantity value: <%= @recipe_food.quantity %></h4>
+          <%= form_with model: @recipe_food, url: user_recipe_recipe_food_path(recipe_id: @recipe.id, id: @recipe_food.id), method: :put, local: true do |f| %>
+            <div class="form-group">
+              <%= f.label :quantity %>
+              <%= f.number_field :quantity, min: 0, class: 'form-control' %>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= link_to "Back to recipe", user_recipe_path(id: @recipe.id), class: 'btn btn-secondary' %>
+              <%= f.submit 'Update food quantity', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
